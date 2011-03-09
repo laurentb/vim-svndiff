@@ -352,6 +352,15 @@ function Svndiff(...)
 		return
 	endif
 
+	if cmd == 'activate'
+		let s:is_active[fname] = 1
+		call s:Svndiff_update()
+		let ok = s:Svndiff_update()
+		if ! ok
+			call Svndiff('clear')
+		endif
+	endif
+
 	if cmd == 'clear'
 		let s:changedtick[fname] = 0
 		if exists("s:is_active[fname]") 
@@ -391,6 +400,10 @@ sign define svndiff_change text=! texthl=diffChange
 if exists("g:svndiff_autoupdate")
 	autocmd CursorHold,CursorHoldI * call s:Svndiff_update()
 	autocmd InsertLeave * call s:Svndiff_update()
+endif
+
+if exists("g:svndiff_autoactivate")
+	autocmd BufReadPost * call Svndiff("activate")
 endif
 
 " vi: ts=2 sw=2 noexpandtab
