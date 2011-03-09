@@ -150,7 +150,7 @@ let s:newline = {}        " dict with newline character of each buffer
 " Commands to execute to get current file contents in various rcs systems
 
 let s:rcs_cmd_svn = "svn cat "
-let s:rcs_cmd_git = "git cat-file -p HEAD:"
+let s:rcs_cmd_git = "git cat-file -p HEAD:$(git rev-parse --show-prefix)"
 let s:rcs_cmd_hg  = "hg cat "
 let s:rcs_cmd_cvs = "cvs -q update -p "
 
