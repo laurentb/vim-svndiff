@@ -393,5 +393,5 @@ if exists("g:svndiff_autoupdate")
 	autocmd InsertLeave * call s:Svndiff_update()
 endif
 
-" vi: ts=2 sw=2
+" vi: ts=2 sw=2 noexpandtab
 
