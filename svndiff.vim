@@ -403,7 +403,7 @@ if exists("g:svndiff_autoupdate")
 endif
 
 if exists("g:svndiff_autoactivate")
-	autocmd BufReadPost * call Svndiff("activate")
+	autocmd BufReadPost * silent call Svndiff("activate")
 endif
 
 " vi: ts=2 sw=2 noexpandtab
